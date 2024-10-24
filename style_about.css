@@ -1,0 +1,494 @@
+/* Estilo Geral */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #020202;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+/* Cabeçalho */
+header {
+background-color: #fafcff;
+color: rgb(248, 241, 241);
+padding: 15px 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+
+}
+
+.logo img {
+    height: 100px;  /* Manter a altura desejada */
+    width: 100px;   /* Definindo uma largura fixa */
+    object-fit: contain; /* Para manter a proporção */
+}
+
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 15px;
+flex-wrap: wrap;
+}
+
+.nav-links a {
+    font-weight: 400; /* Certifique-se de usar o peso 400 (normal) */
+    color: rgb(13, 12, 92);
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+background-color: rgba(248, 212, 10, 0.568); /* Efeito de hover nos links */
+}
+
+.button {
+background-color: #E74C3C;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+position: relative; /* Para que o botão não seja afetado por elementos em z-index */
+z-index: 20; /* Garante que o botão esteja acima dos outros elementos */
+}
+
+.button:hover {
+background-color: #C0392B;
+}
+
+nav form {
+display: flex;
+align-items: center; /* Alinha o ícone e o campo de texto */
+}
+
+nav input[type="text"] {
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 8px;
+margin-right: 5px; /* Espaçamento entre o campo de texto e o botão */
+}
+
+nav button {
+background: none;
+border: none;
+cursor: pointer;
+}
+
+/* Estilos para o campo de busca */
+input[type="text"] {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-right: 5px; /* Espaçamento entre o campo e o botão */
+}
+
+input[type="text"]:focus {
+outline: none; /* Remove o contorno padrão */
+border-color: #3498db; /* Muda a cor da borda ao focar */
+}
+
+button[type="submit"] {
+background-color: #3498db; /* Cor do botão */
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+padding: 10px 15px;
+transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+background-color: #2980b9; /* Cor do botão ao passar o mouse */
+}
+
+/* Título da Seção */
+.section-title {
+    text-align: center;
+    font-size: 36px;
+}
+
+/* Estilo da Linha do Tempo */
+.timeline-section {
+    padding: 30px 0;
+    position: relative;
+}
+
+.timeline-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Item da Linha do Tempo */
+.timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+    position: relative;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-item.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Alternar posição dos elementos para linha do tempo */
+.timeline-item:nth-child(even) .timeline-content {
+    order: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    order: 2;
+}
+
+/* Estilo dos Dados */
+.timeline-date {
+    width: 150px;
+    background-color: #00e676;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.timeline-date:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo do Conteúdo */
+.timeline-content {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 40%;
+    transition: transform 0.5s ease;
+}
+
+.timeline-content:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo das Imagens */
+.timeline-img {
+    width: 60%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 80px;
+    transition: transform 0.3s ease;
+}
+
+.timeline-img:hover {
+    transform: scale(1.9);
+}
+
+.img-mantenedores {
+    width: 30%;
+    border-radius: 10px;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+
+/* Linha Central */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #00e676;
+    top: 120px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+/* Bolinhas de Eventos */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: #00e676;
+    border: 4px solid white;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even)::before {
+    left: -10px;
+}
+
+/* Animações */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    animation: slideInLeft 1s forwards;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    animation: slideInRight 1s forwards;
+}
+
+/* Animação de Fade-In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Efeito Fade-In ao Scroll */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.6s ease-in;
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+}
+
+/* Missão, Visão e Valores */
+.mission-values {
+    display: flex;
+    justify-content: space-around;
+    background-color: #242423;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.mission-values .column {
+    width: 30%;
+    text-align: center;
+}
+
+.mission-values h3 {
+    color: #00e676;
+    text-shadow: 2px 2px 8px #000;
+}
+
+/* style.css */
+
+/* Estilos para o contêiner do carrossel */
+.carousel-section {
+    position: relative; /* Para manter os elementos relativos uns aos outros */
+    max-width: 1600px;
+    margin: 40px auto; /* Centralizar o carrossel horizontalmente */
+    padding: 20px;
+    overflow: hidden;
+    text-align: center; /* Isso vai garantir que o título esteja centralizado */
+    background-color: #e7d068;
+}
+
+/* Centralizar o título */
+.carousel-title {
+    font-size: 24px; /* Tamanho do título */
+    font-weight: bold; /* Negrito para dar destaque */
+    margin-bottom: 20px; /* Espaçamento entre o título e o carrossel */
+    color: #050505;
+    text-align: center; /* Centraliza o texto dentro do contêiner */
+    width: 100%;
+}
+
+/* Estilos para o track do carrossel */
+.carousel-track {
+    display: flex;
+    width: calc(400px * 10); /* Ajusta a largura para o número de itens no carrossel */
+    animation: scroll 60s linear infinite;
+    transition: transform 0.3s ease; /* Para transições suaves */
+}
+
+/* Quando o mouse passa por cima, pausa a animação */
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+/* Itens do carrossel */
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 400px;
+    padding: 10px;
+    box-sizing: border-box; /* Garantir que o padding seja incluído na largura */
+}
+
+/* Estilo do texto nas imagens */
+.carousel-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: #050505;
+}
+
+/* Estilo das imagens */
+img {
+    width: 100%; /* Garantir que a imagem ocupe a largura total do contêiner */
+    height: auto; /* Manter a proporção da imagem */
+    transition: transform 1s;
+}
+
+img:hover {
+    transform: translateZ(35px);
+}
+
+
+/* Animação do carrossel */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-400px * 5)); /* Movimenta o carrossel em relação ao número de itens */
+    }
+}
+
+/* Mantenedores e Equipe */
+.mantenedores {
+    padding: 40px;
+    background-color: #f8f7f7;
+    text-align: center;
+}
+
+h2 {
+    font-size: 28px;
+    color: #ebc804;
+    margin: 10px;
+    margin-left: 40px;
+}
+
+ /* Estilos para o container de Estrutura Física */
+ .estrutura-fisica-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Altura do container */
+    background-image: url('education-day-arrangement-table-with-copy-space.jpg'); /* Caminho da imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Estilos para o conteúdo dentro do container */
+.estrutura-fisica-content {
+    max-width: 70%;
+    background-color: rgba(0, 0, 0, 0.774); /* Fundo escuro semitransparente */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.estrutura-fisica-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.estrutura-fisica-content p {
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #cee0fa;
+    color: rgb(38, 18, 128);
+    text-align: center;
+    padding: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 15px; /* Espaço entre os ícones */
+}
+
+.social-icon {
+    color: white;
+    font-size: 30px; /* Tamanho dos ícones */
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2); /* Aumenta o ícone ao passar o mouse */
+}
+
+.social-icon i {
+    color: #d82109; /* Cor dos ícones */
+}
+
+ /* Botão flutuante do WhatsApp */
+ .whatsapp-button {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    z-index: 100;
+    transition: transform 0.3s;
+    transform: scale(1.1) rotate(3deg); /* Aumenta a escala e inclina */
+    box-shadow: 0 4px 10px rgba(0, 12, 4, 0.877);
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.5);
+}
+
+/* Animação de pulsação */
+@keyframes pulsate {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.5); /* Aumenta o tamanho para 150% */
+}
+100% {
+transform: scale(1);
+}
+}
+
+/* Classe para o efeito de pulsação */
+.pulsate {
+animation: pulsate 1.5s ease-in-out infinite; /* Dura 1.5s, com suavização, repetindo infinitamente */
+}

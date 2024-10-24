@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colégio Interativo</title>
+    
+    <!-- Fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- Estilos internos -->
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            overflow-x: hidden; /* Evita rolagem horizontal */
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #fafcff;
+            color: rgb(248, 241, 241);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+    height: 100px;  /* Manter a altura desejada */
+    width: 100px;   /* Definindo uma largura fixa */
+    object-fit: contain; /* Para manter a proporção */
+}
+        
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+    font-weight: 400; /* Certifique-se de usar o peso 400 (normal) */
+    color: rgb(13, 12, 92);
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+        .nav-links a:hover {
+            background-color: rgba(248, 212, 10, 0.568); /* Efeito de hover nos links */
+        }
+        
+        .button {
+            background-color: #E74C3C;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative; /* Para que o botão não seja afetado por elementos em z-index */
+            z-index: 20; /* Garante que o botão esteja acima dos outros elementos */
+        }
+
+        .button:hover {
+            background-color: #C0392B;
+        }
+
+        nav form {
+    display: flex;
+    align-items: center; /* Alinha o ícone e o campo de texto */
+}
+
+nav input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    margin-right: 5px; /* Espaçamento entre o campo de texto e o botão */
+}
+
+nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+        /* Estilos para o campo de busca */
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px; /* Espaçamento entre o campo e o botão */
+}
+
+input[type="text"]:focus {
+    outline: none; /* Remove o contorno padrão */
+    border-color: #3498db; /* Muda a cor da borda ao focar */
+}
+
+button[type="submit"] {
+    background-color: #3498db; /* Cor do botão */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9; /* Cor do botão ao passar o mouse */
+}
+
+        /* Seção Hero */
+        .hero {
+            position: relative;
+            overflow: hidden; /* Para ocultar imagens fora da área do carrossel */
+            max-height: 500px; /* Altura máxima do carrossel */
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 2s ease-in-out;
+        }
+
+        .carousel img {
+            min-width: 100%; /* Cada imagem ocupa 100% do contêiner */
+            height: auto; /* Mantém a proporção */
+        }
+
+        .hero h1, .hero p {
+            position: absolute;
+            color: rgb(251, 253, 253);
+            text-align: center;
+            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10; /* Garante que o texto esteja acima das imagens */
+        }
+
+        .hero h1 {
+            top: 40%; /* Ajuste para centralizar verticalmente */
+            font-size: 36px;
+        }
+
+        .hero p {
+            top: 50%; /* Ajuste para centralizar verticalmente */
+            font-size: 18px;
+        }
+
+        /* Botão Saiba Mais */
+        .hero .button {
+            position: absolute;
+            top: 60%; /* Ajusta a posição do botão para que fique abaixo do texto */
+            left: 50%;
+            transform: translateX(-50%);
+            
+        }
+
+        /* Map section (elementos circulares) */
+        .map-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            margin: 20px;
+            position: relative; /* Para a inclinação */
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden; /* Para esconder o conteúdo que pode ultrapassar */
+        }
+
+        .circle:before {
+            content: '';
+            position: absolute;
+            top: -10px; /* Ajuste para criar a sobra */
+            left: -10px; /* Ajuste para criar a sobra */
+            right: -10px; /* Ajuste para criar a sobra */
+            bottom: -10px; /* Ajuste para criar a sobra */
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.1); /* Cor de fundo para a sobra */
+            z-index: -1; /* Coloca a sobra atrás do círculo */
+            transition: transform 0.3s;
+        }
+
+        .circle:hover {
+            transform: scale(1.1) rotate(3deg); /* Aumenta a escala e inclina */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .circle a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Rodapé */
+        .footer {
+            background-color: #cee0fa;
+            color: rgb(38, 18, 128);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 15px; /* Espaço entre os ícones */
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 30px; /* Tamanho dos ícones */
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2); /* Aumenta o ícone ao passar o mouse */
+        }
+
+        .social-icon i {
+            color: #d82109; /* Cor dos ícones */
+        }
+
+        /* Botão flutuante do WhatsApp */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 24px;
+            z-index: 100;
+            transition: transform 0.3s;
+            transform: scale(1.1) rotate(3deg); /* Aumenta a escala e inclina */
+            box-shadow: 0 4px 10px rgba(0, 12, 4, 0.877);
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.5);
+        }
+
+       /* Animação de pulsação */
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5); /* Aumenta o tamanho para 150% */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Classe para o efeito de pulsação */
+.pulsate {
+    animation: pulsate 1.5s ease-in-out infinite; /* Dura 1.5s, com suavização, repetindo infinitamente */
+}
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+
+            .circle {
+                width: 100px; /* Ajusta o tamanho dos círculos */
+                height: 100px; /* Ajusta o tamanho dos círculos */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .circle {
+                width: 80px; /* Ajusta o tamanho dos círculos */
+                height: 80px; /* Ajusta o tamanho dos círculos */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">
+            <img src="logotipo.png" alt="Logotipo do Colégio Interativo">
+        </div>
+
+        <div class="partner-logo">
+            <img src="plataformaaz.png" alt="Logotipo do Parceiro" style="height: 90px; width: auto;">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index_about.html">A Escola</a></li>
+            <li><a href="segmentos.html">Segmentos</a></li>
+            <li><a href="news.html">Notícias</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><button class="button" onclick="window.location.href='login.html'">Login</button></li>
+            <li>
+                <form action="search.html" method="GET" style="display: inline;">
+                    <input type="text" name="q" placeholder="Buscar..." aria-label="Campo de busca" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc;"/>
+                    <button type="submit" class="button" style="background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-search" style="color: #000; font-size: 18px;"></i>
+                    </button>
+                </form>
+            </li>
+           
+        </ul>
+        </ul>
+    </header>
+
+    <!-- Seção principal -->
+    <div class="hero">
+        <div class="carousel" id="carousel">
+            <img src="az_livros.jpg" alt="az_livros">
+            <img src="education-day-arrangement-table-with-copy-space.jpg" alt="education-day-arrangement-table-with-copy-space">
+            <img src="happy-kids-elementary-school.jpg" alt="happy-kids-elementary-school">
+            <img src="person-holding-light-bulb-with-graduation-cap.jpg" alt="person-holding-light-bulb-with-graduation-cap">
+            <img src="az_banner.jpg" alt="az_banner">
+            <img src="az_mascote.jpg" alt="az_mascote">
+        </div>
+        <h1>Bem-vindo ao Colégio Interativo</h1>
+        <p>Preparando o seu filho para o futuro!</p>
+        <a href="saiba-mais.html" class="button">Saiba Mais</a>
+    </div>
+
+    <!-- Seção de Mapa -->
+   
+<div class="map-section">
+    <div class="circle" style="background-color: #3498db;">
+        <a href="programas.html">Programas</a>
+    </div>
+    <div class="circle" style="background-color: #e67e22;">
+        <a href="extracurricular.html">Extracurricular</a>
+    </div>
+    <div class="circle" style="background-color: #9b59b6; display: flex; justify-content: center; align-items: center;">
+        <a href="propostapedagogica.html" style="text-align: center;">Proposta Pedagógica</a>
+    </div>
+    <div class="circle" style="background-color: #2ecc71;">
+        <a href="blogdoaluno.html">Blog do Aluno</a>
+    </div>
+</div>
+
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>&copy; 2024 Colégio Interativo. Todos os direitos reservados.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/colegiointerativotucano/" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://wa.me/+5575991255392" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- Botão flutuante do WhatsApp -->
+    <a href="https://wa.me/+5575991255392" target="_blank" class="whatsapp-button pulsate">
+        <i class="fab fa-whatsapp"></i>
+
+    <!-- Scripts -->
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('#carousel img');
+        const totalImages = images.length;
+
+        function showNextImage() {
+            images[currentIndex].style.display = 'none'; // Oculta a imagem atual
+            currentIndex = (currentIndex + 1) % totalImages; // Avança para a próxima imagem
+            images[currentIndex].style.display = 'block'; // Mostra a próxima imagem
+        }
+
+        // Mostra a primeira imagem
+        images.forEach((img, index) => {
+            img.style.display = index === 0 ? 'block' : 'none'; // Exibe apenas a primeira imagem
+        });
+
+        setInterval(showNextImage, 3000); // Troca a imagem a cada 3 segundos
+    </script>
+
+</body>
+</html>
+
+
+

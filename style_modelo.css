@@ -1,0 +1,180 @@
+/* Estilo Geral */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+/* Cabeçalho */
+header {
+background-color: #fafcff;
+color: rgb(248, 241, 241);
+padding: 15px 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+
+}
+
+.logo img {
+    height: 100px;  /* Manter a altura desejada */
+    width: 100px;   /* Definindo uma largura fixa */
+    object-fit: contain; /* Para manter a proporção */
+}
+
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 15px;
+flex-wrap: wrap;
+}
+
+.nav-links a {
+    font-weight: 400; /* Certifique-se de usar o peso 400 (normal) */
+    color: rgb(13, 12, 92);
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+background-color: rgba(248, 212, 10, 0.568); /* Efeito de hover nos links */
+}
+
+.button {
+background-color: #E74C3C;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+position: relative; /* Para que o botão não seja afetado por elementos em z-index */
+z-index: 20; /* Garante que o botão esteja acima dos outros elementos */
+}
+
+.button:hover {
+background-color: #C0392B;
+}
+
+nav form {
+display: flex;
+align-items: center; /* Alinha o ícone e o campo de texto */
+}
+
+nav input[type="text"] {
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 8px;
+margin-right: 5px; /* Espaçamento entre o campo de texto e o botão */
+}
+
+nav button {
+background: none;
+border: none;
+cursor: pointer;
+}
+
+/* Estilos para o campo de busca */
+input[type="text"] {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-right: 5px; /* Espaçamento entre o campo e o botão */
+}
+
+input[type="text"]:focus {
+outline: none; /* Remove o contorno padrão */
+border-color: #3498db; /* Muda a cor da borda ao focar */
+}
+
+button[type="submit"] {
+background-color: #3498db; /* Cor do botão */
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+padding: 10px 15px;
+transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+background-color: #2980b9; /* Cor do botão ao passar o mouse */
+}
+
+
+
+
+
+
+/* Rodapé */
+.footer {
+    background-color: #cee0fa;
+    color: rgb(38, 18, 128);
+    text-align: center;
+    padding: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 15px; /* Espaço entre os ícones */
+}
+
+.social-icon {
+    color: white;
+    font-size: 30px; /* Tamanho dos ícones */
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2); /* Aumenta o ícone ao passar o mouse */
+}
+
+.social-icon i {
+    color: #d82109; /* Cor dos ícones */
+}
+
+ /* Botão flutuante do WhatsApp */
+ .whatsapp-button {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    z-index: 100;
+    transition: transform 0.3s;
+    transform: scale(1.1) rotate(3deg); /* Aumenta a escala e inclina */
+    box-shadow: 0 4px 10px rgba(0, 12, 4, 0.877);
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.5);
+}
+
+/* Animação de pulsação */
+@keyframes pulsate {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.5); /* Aumenta o tamanho para 150% */
+}
+100% {
+transform: scale(1);
+}
+}
+
+/* Classe para o efeito de pulsação */
+.pulsate {
+animation: pulsate 1.5s ease-in-out infinite; /* Dura 1.5s, com suavização, repetindo infinitamente */
+}
